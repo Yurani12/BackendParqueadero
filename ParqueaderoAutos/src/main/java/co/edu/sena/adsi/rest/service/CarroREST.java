@@ -71,23 +71,4 @@ public class CarroREST {
         
     }
     
-    
-        /* @POST
-    public Response create(Carro carro){
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        Gson gson = gsonBuilder.create();
-        try{
-            if (carroEJB.findCarroByPlaca(carro.getPlaca()) == null){
-                carroEJB.create(carro);
-                return Response.status(Response.Status.CREATED).entity(gson.toJson("El vehiculo se registro correctamente")).build();
-            }else{
-                return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJson("El numero de placa ya exixte")).build();
-            }
-            
-        } catch (Exception e){
-            System.out.println("Err: " + e);
-            return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJson("Error al registrar vehiculo")).build();
-        }
-       
-    }*/
 }
