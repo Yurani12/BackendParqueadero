@@ -50,7 +50,7 @@ public class CarroREST {
         
         try{
             if (carroEJB.findByPlaca(carro.getPlaca()) == null) {
-                
+               // if(parque )
                 carroEJB.create(carro);  
                 
               return Response.status(Response.Status.CREATED)

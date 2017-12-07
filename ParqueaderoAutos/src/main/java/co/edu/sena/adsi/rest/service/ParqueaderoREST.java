@@ -2,6 +2,7 @@
 package co.edu.sena.adsi.rest.service;
 
 import co.edu.sena.adsi.jpa.entities.Parqueadero;
+import co.edu.sena.adsi.jpa.entities.Puestos;
 import co.edu.sena.adsi.jpa.sessions.CarroFacade;
 import co.edu.sena.adsi.jpa.sessions.ParqueaderoFacade;
 import com.google.gson.Gson;
@@ -40,9 +41,18 @@ public class ParqueaderoREST {
 
     @GET
     @Path("{id}")
-    public Parqueadero findBye(
-            @PathParam("id") String id) {
-        return parqueaderoEJB.find(id);
+    @Produces(MediaType.TEXT_PLAIN)
+    public int findBye(
+            @PathParam("id") Integer id) {
+        int cont = 0;
+        Parqueadero p = parqueaderoEJB.find(id);
+        
+        for (Puestos pu : p.getPuestosList()) {
+            if (pu.getIdCarro() == null) {
+                cont+=1;
+            }
+        }
+        return cont;
     }
  
     /*

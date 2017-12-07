@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,10 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "carro")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Carro.findAll", query = "SELECT c FROM Carro c")
-    , @NamedQuery(name = "Carro.findById", query = "SELECT c FROM Carro c WHERE c.id = :id")
-    , @NamedQuery(name = "Carro.findByPlaca", query = "SELECT c FROM Carro c WHERE c.placa = :placa")
-    , @NamedQuery(name = "Carro.findByHoraLlegada", query = "SELECT c FROM Carro c WHERE c.horaLlegada = :horaLlegada")})
+    @NamedQuery(name = "Carro.findAll", query = "SELECT c FROM Carro c")})
 public class Carro implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,8 +52,8 @@ public class Carro implements Serializable {
     @Column(name = "hora_llegada")
     @Temporal(TemporalType.TIME)
     private Date horaLlegada;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCarro")
-    private List<Puesto> puestoList;
+    @OneToMany(mappedBy = "idCarro")
+    private List<Puestos> puestosList;
 
     public Carro() {
     }
@@ -97,12 +93,12 @@ public class Carro implements Serializable {
     }
 
     @XmlTransient
-    public List<Puesto> getPuestoList() {
-        return puestoList;
+    public List<Puestos> getPuestosList() {
+        return puestosList;
     }
 
-    public void setPuestoList(List<Puesto> puestoList) {
-        this.puestoList = puestoList;
+    public void setPuestosList(List<Puestos> puestosList) {
+        this.puestosList = puestosList;
     }
 
     @Override

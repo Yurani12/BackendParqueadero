@@ -35,9 +35,6 @@ public class CarroFacade extends AbstractFacade<Carro> {
     public CarroFacade() {
         super(Carro.class);
     }
-    /**
-     * Buscar carro por placa
-     */
     
     public Carro findByPlaca(String placa) {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
@@ -55,4 +52,5 @@ public class CarroFacade extends AbstractFacade<Carro> {
             return null;
         }
     }
+    
 }
